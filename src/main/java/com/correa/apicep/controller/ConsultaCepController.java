@@ -30,11 +30,7 @@ public class ConsultaCepController {
      */
     @GetMapping(value = "/{cep}")
     public ResponseEntity<EnderecoPorCep> consultaCep(@PathVariable("cep") String cep) {
-       try {
-           return service.ConsultaCep(cep);
-       } catch (Exception e){
-           throw new CepInformadoErradoException();
-       }
+        return service.ConsultaCep(cep);
     }
 
 }
