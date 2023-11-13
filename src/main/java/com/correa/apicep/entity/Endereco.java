@@ -1,6 +1,6 @@
 package com.correa.apicep.entity;
 
-public class EnderecoPorCep {
+public class Endereco {
 
 
     private String cep;

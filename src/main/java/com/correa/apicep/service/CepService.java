@@ -1,6 +1,6 @@
 package com.correa.apicep.service;
 
-import com.correa.apicep.entity.EnderecoPorCep;
+import com.correa.apicep.entity.Endereco;
 import com.correa.apicep.exceptions.CepInformadoErradoException;
 import com.correa.apicep.exceptions.CepNaoEncontradoException;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
  */
 
 @Service
-public class ConsultaCepService {
+public class CepService {
 
     /**
      * Consulta informações de endereço com base em um CEP fornecido.
@@ -22,7 +22,7 @@ public class ConsultaCepService {
      * @param cep O CEP a ser consultado.
      * @return Um objeto ResponseEntity que contém os dados do endereço associado ao CEP.
      */
-    public ResponseEntity<EnderecoPorCep> ConsultaCep(String cep) {
+    public ResponseEntity<Endereco> consultaCep(String cep) {
 
         RestTemplate restTemplate = new RestTemplate();
 
@@ -30,7 +30,7 @@ public class ConsultaCepService {
 
 
         try {
-            ResponseEntity<EnderecoPorCep> response = restTemplate.getForEntity(url, EnderecoPorCep.class);
+            ResponseEntity<Endereco> response = restTemplate.getForEntity(url, Endereco.class);
 
             if (response.getStatusCode().is2xxSuccessful()) {
                 if (response.getBody() != null && response.getBody().getCep() != null) {
